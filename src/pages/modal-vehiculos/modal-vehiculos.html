@@ -36,7 +36,7 @@
         <ion-item *ngFor="let multa of vehiculo.multas" detail-push (click)=openModalMultas(multa)>
             <h1>{{ multa.codigo }}</h1>
             <h2>{{ multa.fecha }}</h2>
-            <p>Estado: {{(multa.estado == 1) ? 'Activo' : 'Inactivo'}}</p>
+            <p>Estado: {{(multa.estado == 1) ? 'Pagada' : 'Pendiente'}}</p>
             <p>Valor: {{multa.valor}}</p>
         </ion-item>
     </ion-list>
