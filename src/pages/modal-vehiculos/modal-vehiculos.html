@@ -1,0 +1,46 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ titulo }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label>Placa</ion-label>
+        <ion-input [(ngModel)]="vehiculo.placa"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Modelo</ion-label>
+        <ion-input [(ngModel)]="vehiculo.modelo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Año</ion-label>
+        <ion-input [(ngModel)]="vehiculo.year"></ion-input>
+    </ion-item>
+
+    <div padding>
+        <ion-buttons end>
+            <button ion-button block (click)="openModalMultas()">Agregar Multa</button>
+        </ion-buttons>
+    </div>
+    <ion-list no-margin>
+        <ion-list-header>
+            Multas
+        </ion-list-header>
+        <ion-item *ngFor="let multa of vehiculo.multas" detail-push (click)=openModalMultas(multa)>
+            <h1>{{ multa.codigo }}</h1>
+            <h2>{{ multa.fecha }}</h2>
+            <p>Estado: {{(multa.estado == 1) ? 'Activo' : 'Inactivo'}}</p>
+            <p>Valor: {{multa.valor}}</p>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button block clear (click)="dismiss(false)">Guardar</button>
+    <button ion-button block clear (click)="dismiss(true)" *ngIf="flagButton === true">Eliminar</button>
+</ion-content>

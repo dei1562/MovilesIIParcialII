@@ -1,0 +1,46 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ titulo }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label>Cedula</ion-label>
+        <ion-input [(ngModel)]="customer.cedula"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Nombre (s)</ion-label>
+        <ion-input [(ngModel)]="customer.nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Apellidos</ion-label>
+        <ion-input [(ngModel)]="customer.apellido"></ion-input>
+    </ion-item>
+
+    <div padding>
+        <ion-buttons end>
+            <button ion-button block (click)="openModalVehiculos()">Agregar Vehiculo</button>
+        </ion-buttons>
+    </div>
+    <ion-list no-margin>
+        <ion-list-header>
+            Vehiculos
+        </ion-list-header>
+        <ion-item *ngFor="let vehiculo of customer.vehiculos" (click)="openModalVehiculos(vehiculo)">
+            <h1>{{ vehiculo.placa }}</h1>
+            <h2>Modelo: {{ vehiculo.modelo }}</h2>
+            <p>Año: {{vehiculo.year}}</p>
+        </ion-item>
+    </ion-list>
+
+    <button ion-button block clear (click)="addCustomer(customer)" *ngIf="flagButton === false">Guardar</button>
+    <button ion-button block clear (click)="updateCustomer(customer)" *ngIf="flagButton === true">Actualizar</button>
+    <button ion-button block clear (click)="removeCustomer(customer)" *ngIf="flagButton === true">Eliminar</button>
+</ion-content>

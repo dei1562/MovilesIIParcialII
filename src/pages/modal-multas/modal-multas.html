@@ -1,0 +1,42 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{ titulo }}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-item>
+        <ion-label>Codigo</ion-label>
+        <ion-input [(ngModel)]="multa.codigo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-datetime displayFormat="YYYY/MM/DD" [max]="today" [(ngModel)]="multa.fecha"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Descripcion</ion-label>
+        <ion-input [(ngModel)]="multa.descripcion"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Estado</ion-label>
+        <ion-select [(ngModel)]="multa.estado">
+            <ion-option value="1">Activo</ion-option>
+            <ion-option value="0">Inactivo</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Valor</ion-label>
+        <ion-input [(ngModel)]="multa.valor"></ion-input>
+    </ion-item>
+
+    <button ion-button block clear (click)="dismiss(false)">Guardar</button>
+    <button ion-button block clear (click)="dismiss(true)" *ngIf="flagButton === true">Eliminar</button>
+</ion-content>
